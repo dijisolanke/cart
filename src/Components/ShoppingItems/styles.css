@@ -17,13 +17,13 @@ img {
 }
 
 /* smaller view widths */
-@media (max-width: 1000px) {
+@media (max-width: 1140px) {
   img {
-    width: 120px;
+    width: 100px;
   }
 }
 @media (max-width: 850px) {
   img {
-    width: 100px;
+    width: 80px;
   }
 }
