@@ -1,0 +1,29 @@
+.item-container {
+  display: flex;
+  text-align: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  border: 2px solid;
+  border-radius: 100px;
+  margin: 0 12%;
+}
+.card-component {
+  padding: 5%;
+}
+img {
+  width: 150px;
+}
+
+/* smaller view widths */
+@media (max-width: 1000px) {
+  img {
+    width: 120px;
+  }
+}
+@media (max-width: 850px) {
+  img {
+    width: 100px;
+  }
+}

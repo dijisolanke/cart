@@ -1,13 +1,12 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Cart from "./Components/Cart";
-//import Items
+import ShoppingItems from "./Components/ShoppingItems";
 
 function App() {
   return (
     <>
       <Cart itemCount={0} />
+      <ShoppingItems />
     </>
   );
 }
