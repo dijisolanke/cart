@@ -1,15 +1,26 @@
 import items from "./items";
 import "./styles.css";
 
-function ShoppingItems() {
+interface ShoppingItemsProps {
+  countValue?: number;
+  setCountValue?: React.Dispatch<React.SetStateAction<number>>;
+}
+
+function ShoppingItems({ countValue, setCountValue }: ShoppingItemsProps) {
+  const handleAddToBasket = () => {
+    if (setCountValue && countValue !== undefined) {
+      setCountValue(countValue + 1);
+    }
+  };
+
   return (
     <div className="item-container">
-      {Object.values(items).map((child, index) => (
+      {Object.values(items).map((child) => (
         <div key={child.id} className="card-component">
           <img src={child.url} alt={`Image of item ${child.id}`} />
           <p>Item {child.name}</p>
           <p>Price: £{child.price}</p>
-          <button onClick={() => null}> Add to basket</button>
+          <button onClick={handleAddToBasket}> Add to basket</button>
         </div>
       ))}
     </div>
