@@ -1,88 +1,70 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 import Cart from "./Components/Cart";
 import ShoppingItems from "./Components/ShoppingItems";
 import BasketOverlay from "./Components/BasketOverlay";
-import { Item } from "../src/Components/ShoppingItems/types";
+import { Item } from "./Components/ShoppingItems/types";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState<number>(() => {
-    const savedCount = localStorage.getItem("itemCount");
-    return savedCount ? JSON.parse(savedCount) : 0;
-  });
+  // initializes a state variable for mumber of items in cart
+  const [count, setCount] = useState(() =>
+    JSON.parse(localStorage.getItem("itemCount") || "0")
+  );
 
-  const [cart, setCart] = useState<Item[]>(() => {
-    const savedCart = localStorage.getItem("cartItems");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  // initializing a state variable for our cart items
+  const [cart, setCart] = useState<Item[]>(() =>
+    JSON.parse(localStorage.getItem("cartItems") || "[]")
+  );
 
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
+  const toggleOverlay = () => setIsOverlayVisible((prev) => !prev); // toggle boolean value between possible optons
+
+  // Sync cart and count with localStorage on change
   useEffect(() => {
     localStorage.setItem("itemCount", JSON.stringify(count));
     localStorage.setItem("cartItems", JSON.stringify(cart));
   }, [count, cart]);
 
-  const toggleOverlay = () => {
-    setIsOverlayVisible(!isOverlayVisible);
+  const handleAddToBasket = (item: Item) => {
+    // Increment count
+    setCount((prev: number) => prev + 1);
+
+    //checks if the item is already in the cart
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+
+      if (existingItem) {
+        // Update quantity for existing item
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      }
+
+      // Add new item with quantity 1
+      return [...prevCart, { ...item, quantity: 1 }];
+    });
   };
 
   return (
     <>
-      <Cart
-        itemCount={count}
-        toggleOverlay={toggleOverlay} // Passing the toggle function to Cart
-      />
-      <BasketOverlay
-        cart={cart}
-        isVisible={isOverlayVisible}
-        onClose={toggleOverlay} // Passing the function to close the overlay
-      />
+      <Cart itemCount={count} toggleOverlay={toggleOverlay} />
       <ShoppingItems
         countValue={count}
         setCountValue={setCount}
         cart={cart}
         setCart={setCart}
+        handleAddToBasket={handleAddToBasket}
+      />
+      <BasketOverlay
+        cart={cart}
+        isVisible={isOverlayVisible}
+        onClose={toggleOverlay}
       />
     </>
   );
 }
 
 export default App;
-
-// import { useState, useEffect } from "react";
-// import "./App.css";
-// import Cart from "./Components/Cart";
-// import ShoppingItems from "./Components/ShoppingItems";
-// import { Item } from "../src/Components/ShoppingItems/types";
-
-// function App() {
-//   const [count, setCount] = useState<number>(() => {
-//     const savedCount = localStorage.getItem("itemCount");
-//     return savedCount ? JSON.parse(savedCount) : 0;
-//   });
-
-//   const [cart, setCart] = useState<Item[]>(() => {
-//     const savedCart = localStorage.getItem("cartItems");
-//     return savedCart ? JSON.parse(savedCart) : [];
-//   });
-
-//   useEffect(() => {
-//     localStorage.setItem("itemCount", JSON.stringify(count));
-//     localStorage.setItem("cartItems", JSON.stringify(cart));
-//   }, [count, cart]);
-
-//   return (
-//     <>
-//       <Cart itemCount={count} />
-//       <ShoppingItems
-//         countValue={count}
-//         setCountValue={setCount}
-//         cart={cart}
-//         setCart={setCart}
-//       />
-//     </>
-//   );
-// }
-
-// export default App;

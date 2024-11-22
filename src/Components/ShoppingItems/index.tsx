@@ -7,24 +7,10 @@ interface ShoppingItemsProps {
   setCountValue?: React.Dispatch<React.SetStateAction<number>>;
   cart: Array<Item>;
   setCart: React.Dispatch<React.SetStateAction<Array<Item>>>;
+  handleAddToBasket: (item: Item) => void;
 }
 
-function ShoppingItems({
-  countValue,
-  setCountValue,
-  cart,
-  setCart,
-}: ShoppingItemsProps) {
-  const handleAddToBasket = (item: Item) => {
-    // Increment the count
-    if (setCountValue && countValue !== undefined) {
-      setCountValue(countValue + 1);
-    }
-
-    // Add the item to the cart array
-    setCart([...cart, item]);
-  };
-
+function ShoppingItems({ handleAddToBasket }: ShoppingItemsProps) {
   return (
     <div className="item-container">
       {Object.values(items).map((child) => (

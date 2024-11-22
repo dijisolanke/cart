@@ -3,6 +3,7 @@ export interface Item {
     price: number;  
     id: string;   
     name: string  
+    quantity: number
   }
   
   export type Items = Record<string, Item>;

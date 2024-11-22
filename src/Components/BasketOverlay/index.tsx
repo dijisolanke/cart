@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.css";
 import { Item } from "../ShoppingItems/types";
+import "./styles.css";
 
 interface BasketOverlayProps {
   cart: Item[];
@@ -9,8 +9,10 @@ interface BasketOverlayProps {
 }
 
 const BasketOverlay = ({ cart, isVisible, onClose }: BasketOverlayProps) => {
+  if (!isVisible) return null;
+
   return (
-    <div className={`overlay ${isVisible ? "show" : ""}`}>
+    <div className="overlay">
       <div className="overlay-content">
         <button className="close-btn" onClick={onClose}>
           Close
@@ -25,12 +27,16 @@ const BasketOverlay = ({ cart, isVisible, onClose }: BasketOverlayProps) => {
                 <img src={item.url} alt={`Image of item ${item.id}`} />
                 <p>
                   {item.name} - £{item.price}
+                  {item.quantity > 1 && <span> x{item.quantity}</span>}
                 </p>
               </li>
             ))}
           </ul>
         )}
-        <p>Total: £{cart.reduce((total, item) => total + item.price, 0)}</p>
+        <p>
+          Total: £
+          {cart.reduce((total, item) => total + item.price * item.quantity, 0)}
+        </p>
       </div>
     </div>
   );

@@ -6,24 +6,28 @@ const items: Items = {
     price: 50,
     id: "a",
     name: "A",
+    quantity: 0
   },
   b: {
     url: "/B.jpg",
     price: 30,
     id: "b",
     name: "B",
+    quantity: 0
   },
   c: {
     url: "/C.jpg",
     price: 20,
     id: "c",
     name: "C",
+    quantity: 0
   },
   d: {
     url: "/D.jpg",
     price: 15,
     id: "d",
     name: "D",
+    quantity: 0
   },
 };
 
