@@ -3,49 +3,34 @@ import Cart from "./Components/Cart";
 import ShoppingItems from "./Components/ShoppingItems";
 import BasketOverlay from "./Components/BasketOverlay";
 import { Item } from "./Components/ShoppingItems/types";
+import {
+  initializeCart,
+  initializeCount,
+  syncLocalStorage,
+  addToCart,
+} from "./helperFunctions";
 import "./App.css";
 
 function App() {
-  // initializes a state variable for mumber of items in cart
-  const [count, setCount] = useState(() =>
-    JSON.parse(localStorage.getItem("itemCount") || "0")
-  );
+  // Initialize state for cart and count
+  const [count, setCount] = useState<number>(initializeCount);
+  const [cart, setCart] = useState<Item[]>(initializeCart);
 
-  // initializing a state variable for our cart items
-  const [cart, setCart] = useState<Item[]>(() =>
-    JSON.parse(localStorage.getItem("cartItems") || "[]")
-  );
-
+  // Overlay visibility state
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
-  const toggleOverlay = () => setIsOverlayVisible((prev) => !prev); // toggle boolean value between possible optons
+  // Toggle the overlay visibility
+  const toggleOverlay = () => setIsOverlayVisible((prev) => !prev);
 
-  // Sync cart and count with localStorage on change
+  // Sync cart and count with localStorage on changes
   useEffect(() => {
-    localStorage.setItem("itemCount", JSON.stringify(count));
-    localStorage.setItem("cartItems", JSON.stringify(cart));
+    syncLocalStorage(count, cart);
   }, [count, cart]);
 
+  // Handle adding an item to the basket
   const handleAddToBasket = (item: Item) => {
-    // Increment count
-    setCount((prev: number) => prev + 1);
-
-    //checks if the item is already in the cart
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
-
-      if (existingItem) {
-        // Update quantity for existing item
-        return prevCart.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
-      }
-
-      // Add new item with quantity 1
-      return [...prevCart, { ...item, quantity: 1 }];
-    });
+    setCount((prev) => prev + 1); // Increment count
+    setCart((prevCart) => addToCart(prevCart, item)); // Update cart
   };
 
   return (
