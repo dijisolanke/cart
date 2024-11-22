@@ -52,9 +52,9 @@ const BasketOverlay = ({ cart, isVisible, onClose }: BasketOverlayProps) => {
             (Includes discounts: £{discountA + discountB})
             <br />
             <br />
-            £20 off for every 3 "A"s,
+            <span className="red-text">£20 </span>off for every 3 "A"s,
             <br />
-            £15 off for every 2 "B"s
+            <span className="red-text">£15 </span>off for every 2 "B"s
           </span>
         </p>
         <button className="clear-cart-btn" onClick={handleClearCart}>

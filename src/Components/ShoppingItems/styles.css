@@ -5,9 +5,11 @@
   justify-content: center;
   align-items: center;
   overflow: scroll;
+  padding: 2% 0;
+  margin-top: 20%;
   border: 2px solid;
-  border-radius: 100px;
-  margin: 0 12%;
+  border-radius: 40px;
+  margin: 14% 12%;
 }
 .card-component {
   padding: 5%;
