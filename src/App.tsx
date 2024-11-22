@@ -9,7 +9,6 @@ import {
   syncLocalStorage,
   addToCart,
 } from "./helperFunctions";
-import "./App.css";
 
 function App() {
   // Initialize state for cart and count
