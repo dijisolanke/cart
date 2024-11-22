@@ -20,3 +20,11 @@
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.cart {
+  all: unset;
+}
+.cart:hover {
+  cursor: pointer;
+  border-bottom: solid black 1px;
+}
