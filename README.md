@@ -22,7 +22,13 @@
   * For each item, tracked the total price per multiples using a unique ID
   * I used the same ID to add a check
     * if certain items had multiple of three and added a discount to the total
-  
+
+* I used a folder structure pattern where each component has
+  *Index file
+  *Styles sheet
+  *Types
+  *Test file
+* This is a pattern I was introduced to in previous commercial environments and I like because I tend to use Styled Components and I find it's a neat way of coupling styling with the relevant components
 
 ## Available Scripts
 
