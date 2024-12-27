@@ -8,7 +8,7 @@
 
 ## Process
 
-- First I built the UI
+- First I built the UI with React
 - Then I added functionality beginning with putting the cart information into an array when add to cart button was clicked.
 - Confirmed it was working with console log.
 - Then I used LocalStorage so the list would persist on page refresh.
@@ -22,8 +22,7 @@
   * For each item, tracked the total price per multiples using a unique ID
   * I used the same ID to add a check
     * if certain items had multiple of three and added a discount to the total
- 
-# This is a React application
+  
 
 ## Available Scripts
 
