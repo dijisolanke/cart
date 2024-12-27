@@ -26,21 +26,10 @@
 * I used a folder structure pattern where each component has
   # Folder Structure
 parent-component/
-├── index
-├── styles
-├── types
-└── tests
-
-# Folder Structure
-
-parent-component/
-├── index.js
-│
-├── index.js
-│
-├── index.js
-│
-└── index.js
+ * index
+ * styles
+ * types
+ * tests
  
 * This is a pattern I was introduced to in previous commercial environments and I like because I tend to use Styled Components and I find it's a neat way of coupling styling with the relevant components
 
