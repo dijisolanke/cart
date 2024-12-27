@@ -47,3 +47,9 @@ I Started off with a rough idea of how I wanted to layout my components
  - Get the items to be displayed in a checkout component
  - Make sure rather than duplicating the items, they show up as multiples of the same
  - Make sure they had unique ID'a which I used to both address the issue of duplicated components and specify which items to apply special discounts to
+ - * Item 1
+* Item 2
+* Item 3
+    * Item 3a
+    * Item 3b
+    * Item 3c
