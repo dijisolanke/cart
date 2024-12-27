@@ -1,4 +1,4 @@
-# This is a short assesment task
+# This is a simple proof of concept for an online store cart
 
 ![Screenshot 2024-11-22 at 11 34 58](https://github.com/user-attachments/assets/05332262-f3fa-4cdb-843f-a781a5120d37)
 
