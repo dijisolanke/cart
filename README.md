@@ -19,7 +19,9 @@
   * Increment number in cart icon when item is added to cart
   * Get the items to be displayed in a checkout component
   * Make sure rather than duplicating the items, they show up as multiples of the same
-  * Make sure they had unique ID'a which I used to both address the issue of duplicated components and specify which items to apply special discounts to
+  * For each item, tracked the total price per multiples using a unique ID
+  * I used the same ID to add a check
+    * if certain items had multiple of three and added a discount to the total
  
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
