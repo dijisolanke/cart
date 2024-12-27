@@ -30,6 +30,7 @@ parent-component/
  * styles
  * types
  * tests
+   
 This is a pattern I was introduced to in previous commercial environments and I like because I tend to use Styled Components and I find it's a neat way of coupling styling with the relevant components
 
 ## Available Scripts
