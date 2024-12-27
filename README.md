@@ -41,10 +41,10 @@ I Started off with a rough idea of how I wanted to layout my components
 - I set up my component's in such a way that child components (the button under the items) had to pass information up to its parent component. This proved to be messy and in the end I had to quite a bit of refactoring in order to work out a clean way to do so.
 - I don't think I quite found the optimal way to do it and in the end but I opted to try separate the logic(functions) from the structural code as much as I could.
 * I broke the logic into small parts 
- * get an array of the items
- * store them in memory
- * Get the cart Icon to update nuber when cart item is added
- * Get the items to be displayed in a checkout component
- * Make sure rather than duplicating the items, they show up as multiples of the same
- * Make sure they had unique ID'a which I used to both address the issue of duplicated components and specify which items to apply special discounts to
+  * get an array of the items
+  * store them in memory
+  * Get the cart Icon to update nuber when cart item is added
+  * Get the items to be displayed in a checkout component
+  * Make sure rather than duplicating the items, they show up as multiples of the same
+  * Make sure they had unique ID'a which I used to both address the issue of duplicated components and specify which items to apply special discounts to
  
